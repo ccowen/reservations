@@ -48,7 +48,7 @@
 				<li>
 					<div class="collapsible-header"><i class="material-icons"><h5>WaitingList</h5></i></div>
 				</li>
-				
+
 				<!--  this will be appended if the data is available <li>
 					<div class="collapsible-header"><i class="material-icons"><h6>table1</h6></i></div>
 					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
@@ -69,12 +69,6 @@
 $(document).ready(function() {
 
 	event.preventDefault();
-	var dataJson = {
-		name: $("#name").val().trim(),
-		phoneNumber: $("#phoneNumber").val().trim(),
-		uniqueID: $("#uniqueID").val().trim(),
-		email: $("#email").val().trim()
-	};
 
 	var queryURL = "/api/table";
 	var data;
