@@ -11,22 +11,29 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 		<!-- internal javascript -->
 		<script type="text/javascript" src="assets/javascript/javascript.js"></script>
+		<!-- font awesome -->
+		<script src="https://use.fontawesome.com/2d05a3f6a5.js"></script>
 		<!-- internal css -->
 		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
 	</head>
 
 	<body>
-		<nav>
-			<div class="nav-wrapper">
-				<a href="#" class="brand-logo center">Hot Restaurant App</a>
-				<ul id="nav-mobile" class="left hide-on-med-and-down">
-				</ul>
+		<div class="container">
+			<nav>
+				<div class="nav-wrapper">
+					<a href="#" id="title" class="brand-logo"><i class="fa fa-fire"></i>Hot Restaurant App</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a class="valign-wrapper waves-effect waves-light btn-large" href="links.html"><span class="fa fa-id-card-o"></span> Make Reservation</a></li>
+						<li><a class="valign-wrapper waves-effect waves-light btn-large"><span class="fa fa-home"></span></a></li>
+					</ul>
+					</ul>
+				</div>
+			</nav>
+			<div id="apiLinks">
+				<a class="waves-effect waves-light btn" href="api/tables">API Table Link</a>
+				<a class="waves-effect waves-light btn" href="api/waitlist">API Wait List</a>
 			</div>
-		</nav>
-		<a class="waves-effect waves-light btn-large" href="tables/">View Tables</a>
-		<a class="waves-effect waves-light btn-large" href="reserve/">Make Reservation</a>
-		<a class="waves-effect waves-light btn" href="api/tables">API Table Link</a>
-		<a class="waves-effect waves-light btn" href="api/waitlist">API Wait List</a>
+		</div>
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 	</body>
