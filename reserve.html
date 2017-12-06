@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Document</title>
+		<!-- jquery -->
+		<script   src="https://code.jquery.com/jquery-3.2.1.min.js"   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="   crossorigin="anonymous"></script>
+		<!-- Compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+		<!-- internal javascript -->
+		<script type="text/javascript" src="assets/javascript/javascript.js"></script>
+		<!-- internal css -->
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	</head>
+
+	<body>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="#" class="brand-logo center">Hot Restaurant App</a>
+			</div>
+		</nav>
+		<a class="waves-effect waves-light btn-large" href="tables/">View Tables</a>
+		<a class="waves-effect waves-light btn-large" href="/">Home Page</a>
+		<div class="row">
+			<form class="col s12">
+				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="Your Name" id="name" type="text" class="validate">
+						<label for="name">Name</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="phoneNumber" type="text" class="validate">
+						<label for="phoneNumber">Phone Number</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="uniqueID" type="text" class="validate">
+						<label for="uniqueID">Unique ID</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="email" class="validate">
+						<label for="email">Email</label>
+					</div>
+				</div>
+			</form>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="glyphicon glyphicon-fire"></span>Submit</button>
+          </div>
+          <br>
+		
+		<a class="waves-effect waves-light btn" href="api/tables">API Table Link</a>
+		<a class="waves-effect waves-light btn" href="api/waitlist">API Wait List</a>
+		<!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+        
+        <script type="text/javascript">
+            // Question: What does this code do?
+            $("#add-btn").on("click", function(event) {
+              event.preventDefault();
+              var resObj = {
+                name: $("#name").val().trim(),
+                phoneNumber: $("#phoneNumber").val().trim(),
+                uniqueID: $("#uniqueID").val().trim(),
+                email: $("#email").val().trim()
+              };
+              
+              // Question: What does this code do??
+              $.post("/api/table", resObj)
+              .done(function(data) {
+                console.log(data);
+                alert("Reservation made");
+              });
+              $("#name").val('');
+              $("#phoneNumber").val('');
+              $("#uniqueID").val('');
+              $("#email").val('');
+              
+            });
+          </script>
+	</body>
+</html>
+
+
+			
