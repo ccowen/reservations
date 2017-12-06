@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-var reservations = [
+var resObj = [
   {
     name: "Power Clap",
     phoneNumber: "911",
@@ -21,7 +21,9 @@ var reservations = [
   }
 ]
 
+// console.log(resObj);
 var waitlist = [];
+var reservations = [];
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
@@ -29,18 +31,18 @@ app.get("/", function(req, res) {
   console.log("This is running");
 });
 
-app.get("/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
+// front end routes
+app.get("/table", function(req, res) {
+  res.sendFile(path.join(__dirname, "table.html"));
 });
 
 app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/api/tables", function(req, res) {
-  res.sendFile(path.join(__dirname, "tables.html"));
-});
 
+
+// back end routes
 app.get("/api/waitlist", function(req, res) {
   res.sendFile(path.join(__dirname, "waitlist.html"));
 });
@@ -52,9 +54,23 @@ app.listen(PORT, function() {
 });
 
 // Create new reservation - takes in JSON input
-app.post("/api/new", function(req, res) {
+app.post("/api/table", function(req, res) {
   var newreservation = req.body;
-  newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
+
+  if (reservations.length >= 5){
+    waitlist.push(newreservation);
+    console.log("This is the waitlist:");
+    console.log(waitlist);
+  } else {
+    reservations.push(newreservation);
+
+    console.log("These are the reservations:");
+    console.log(reservations);
+  }
+  // reservations.push(newreservation)
+
+
+  // newreservation.routeName = newreservation.name.replace(/\s+/g, "").toLowerCase();
 
 });
 
