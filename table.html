@@ -30,34 +30,30 @@
 				</ul>
 			</div>
 		</nav>
-		<div id="currentReservations">
-			<ul class="collapsible" data-collapsible="accordion">
+		<div>
+			<ul id="currentReservations" class="collapsible" data-collapsible="accordion">
 				<li>
 					<div class="collapsible-header"><i class="material-icons"><h5>CurrentReservations</h5></i></div>
 				</li>
-				<li>
+
+				<!-- this will be appended if the data is available <li>
 					<div class="collapsible-header"><i class="material-icons"><h6>table1</h6></i></div>
 					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				</li>
-				<li>
-					<div class="collapsible-header"><i class="material-icons"><h6>table2</h6></i></div>
-					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				</li>
+				</li> -->
+				
 			</ul>
 		</div>
-		<div class="waitingList">
-			<ul class="collapsible" data-collapsible="accordion">
+		<div>
+			<ul id="waitingList" class="collapsible" data-collapsible="accordion">
 				<li>
 					<div class="collapsible-header"><i class="material-icons"><h5>WaitingList</h5></i></div>
 				</li>
-				<li>
+				
+				<!--  this will be appended if the data is available <li>
 					<div class="collapsible-header"><i class="material-icons"><h6>table1</h6></i></div>
 					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				</li>
-				<li>
-					<div class="collapsible-header"><i class="material-icons"><h6>table2</h6></i></div>
-					<div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-				</li>
+				</li> -->
+				
 			</ul>
 		</div>
 		<div id="apiLinks">
@@ -67,6 +63,41 @@
 	</div>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+	<script type="text/javascript">
+
+$(document).ready(function() {
+
+	event.preventDefault();
+	var dataJson = {
+		name: $("#name").val().trim(),
+		phoneNumber: $("#phoneNumber").val().trim(),
+		uniqueID: $("#uniqueID").val().trim(),
+		email: $("#email").val().trim()
+	};
+
+	var queryURL = "/api/table";
+	var data;
+
+	$.ajax({
+		url: queryURL,
+		method: "GET"
+	}).done(function(response) {
+		data = response;
+	});
+
+	for (var i = 0; i < data.length; i++) {
+		if (i < 5) {
+			$("#currentReservations").append("<li><div class='collapsible-header'><i class='material-icons'><h6>" + data[i].name + "</h6></i></div><div class='collapsible-body'><span>" + data[i].phoneNumber + data[i].uniqueID + data[i].email + "</span></div></li>");
+		}
+		else {
+			$("#waitingList").append("<li><div class='collapsible-header'><i class='material-icons'><h6>" + data[i].name + "</h6></i></div><div class='collapsible-body'><span>" + data[i].phoneNumber + data[i].uniqueID + data[i].email + "</span></div></li>");
+		}
+	}
+
+});
+</script>
+
 </body>
 
 </html>
