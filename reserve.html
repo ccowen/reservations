@@ -69,13 +69,18 @@
                 uniqueID: $("#uniqueID").val().trim(),
                 email: $("#email").val().trim()
               };
-        
+              
               // Question: What does this code do??
               $.post("/api/table", resObj)
               .done(function(data) {
                 console.log(data);
                 alert("Reservation made");
               });
+              $("#name").val('');
+              $("#phoneNumber").val('');
+              $("#uniqueID").val('');
+              $("#email").val('');
+              
             });
           </script>
 	</body>
