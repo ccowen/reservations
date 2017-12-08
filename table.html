@@ -69,12 +69,6 @@
 $(document).ready(function() {
 
 	event.preventDefault();
-	var dataJson = {
-		name: $("#name").val().trim(),
-		phoneNumber: $("#phoneNumber").val().trim(),
-		uniqueID: $("#uniqueID").val().trim(),
-		email: $("#email").val().trim()
-	};
 
 	var queryURL = "/api/table";
 	var data;
