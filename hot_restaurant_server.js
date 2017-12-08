@@ -41,7 +41,6 @@ app.get("/reserve", function(req, res) {
 });
 
 
-
 // back end routes
 app.get("/api/waitlist", function(req, res) {
   res.sendFile(path.join(__dirname, "waitlist.html"));
